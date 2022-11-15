@@ -3,14 +3,9 @@
 const openModal = () =>
   document.getElementById("modal").classList.add("active");
 
-const closeModal = () =>
+const closeModal = () => {
+  clearFields();
   document.getElementById("modal").classList.remove("active");
-
-const tempClient = {
-  nome: "Van",
-  email: "van@email.com",
-  celular: "13988473807",
-  cidade: "São Paulo",
 };
 
 const getLocalStorage = () =>
@@ -39,34 +34,64 @@ const deleteClient = (index) => {
   setLocalStorage(dbClient);
 };
 
-const isValid = (name) => {
+const save = () => {
+  if (isValid()) {
+    const client = {
+      name: document.getElementById("name").value,
+      niver: document.getElementById("birthday").value,
+      cell: document.getElementById("cellphone").value,
+      city: document.getElementById("city").value,
+    };
+    createClient(client);
+    closeModal();
+  }
+};
+
+const createRow = () => {};
+
+const updateTable = () => {
+  const dbClient = readClient();
+  dbClient.forEach(createRow);
+};
+
+const clearInputs = () => {
+  document.getElementById("name").value = "";
+  document.getElementById("birthday").value = "";
+  document.getElementById("cellphone").value = "";
+  document.getElementById("city").value = "";
+};
+
+const clearFields = () => {
+  const fields = document.querySelectorAll(".modal-field");
+  fields.forEach((field) => {
+    field.value = "";
+  });
+};
+
+const isValid = () => {
   const nameClient = document.getElementById("name").value;
-  const emailClient = document.getElementById("email").value;
+  const birthdayClient = document.getElementById("birthday").value;
   const cellClient = document.getElementById("cellphone").value;
   const cityClient = document.getElementById("city").value;
   let msg = "";
   if (nameClient === "") {
-    msg += "Informe o nome do Cliente \n";
-  } else if (emailClient === "") {
-    msg += "Informe o email do Cliente \n";
-  } else if (cellClient === "") {
-    msg += "Informe o celular do Cliente \n";
-  } else if (cityClient === "") {
-    msg += "Informe a cidade do Cliente \n";
+    msg += "- Informe o nome do Cliente \n";
+  }
+  if (birthdayClient === "") {
+    msg += "- Informe o email do Cliente \n";
+  }
+  if (cellClient === "") {
+    msg += "- Informe o celular do Cliente \n";
+  }
+  if (cityClient === "") {
+    msg += "- Informe a cidade do Cliente \n";
   }
 
   if (msg !== "") {
     alert(msg);
     return false;
   }
-
   return true;
-};
-
-const save = () => {
-  if (isValid()) {
-    console.log("Cadastrando clientes");
-  }
 };
 
 document.getElementById("registerClient").addEventListener("click", openModal);
