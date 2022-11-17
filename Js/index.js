@@ -167,3 +167,9 @@ document
   .addEventListener("click", editDelete);
 
 updateTable();
+
+const date = new Date();
+const year = date.getFullYear();
+const footerYear = document.getElementById("year");
+
+footerYear.innerText = year;

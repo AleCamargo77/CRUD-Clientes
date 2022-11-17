@@ -18,9 +18,30 @@
   </head>
   <body>
     <header>
-      <h1 class="header-title">Cadastro de Clientes</h1>
+      <header id="header" class="header-container">
+        <a id="logo" href="./index.html"><img src="./css/images/Logo Gomes preto.jpg"></a>
+        <!-- <div class="clock" id="clockNow">--:--:--</div> -->
+        <nav class="nav" id="nav">
+            <button aria-label="Abrir Menu" id="btn-mobile" aria-haspopup="true" aria-controls="menu"
+                aria-expanded="false">
+                <span id="hamburger"></span>
+            </button>
+            <!-- <ul id="menu" role="menu">
+                <li>
+                    <a href="#ComunicacaoInterna">Comunicação Interna</a>
+                </li>
+                <li>
+                    <a href="./fretes.html">Calculadora Frete</a>
+                </li>
+                <li>
+                    <a href="./calculadora.html">Calculadora</a>
+                </li> -->
+            <!-- </ul> -->
+        </nav>
+      
     </header>
     <main>
+      <h1 class="header-title">Cadastro de Clientes</h1>
       <button type="button" class="button blue mobile" id="registerClient">
         Cadastrar Cliente
       </button>
@@ -107,6 +128,6 @@
         </div>
       </div>
     </main>
-    <footer>Copyright &copy; Alessandro Camargo</footer>
+    <footer>© Copyright <span id="year"></span> | Desenvolvido por <strong>Alessandro Camargo</strong> </footer>
   </body>
 </html>
