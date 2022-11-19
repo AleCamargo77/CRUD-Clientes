@@ -1,3 +1,5 @@
+let id = 1;
+
 const openModal = () =>
   document.getElementById("modal").classList.add("active");
 
@@ -14,6 +16,7 @@ const setLocalStorage = (dbClient) =>
   localStorage.setItem("db_client", JSON.stringify(dbClient));
 
 const createClient = (client) => {
+  // id++;
   const dbClient = getLocalStorage();
   console.log(dbClient);
   dbClient.push(client);
@@ -37,6 +40,7 @@ const deleteClient = (index) => {
 const save = () => {
   if (isValid()) {
     const client = {
+      id: document.getElementById("id").value,
       name: document.getElementById("name").value,
       niver: document.getElementById("birthday").value,
       cell: document.getElementById("cellphone").value,
@@ -58,6 +62,7 @@ const save = () => {
 const createRow = (client, index) => {
   const newRow = document.createElement("tr");
   newRow.innerHTML = `
+  <td>${client.id}</td>
     <td>${client.name}</td>
     <td>${client.niver}</td>
     <td>${client.cell}</td>

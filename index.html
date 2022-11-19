@@ -48,6 +48,7 @@
       <table class="records" id="tableClient">
         <thead>
           <tr>
+            <th>ID</th>
             <th>Nome</th>
             <th>Data de nascimento</th>
             <th>Celular</th>
@@ -95,6 +96,14 @@
             <span class="modal-close" id="modalClose">&#10006;</span>
           </header>
           <form class="modal-form">
+            <input
+            type="number"
+            class="modal-field"
+            placeholder="ID"
+            id="id"
+            data-index="new"
+            value=1
+          />
             <input
               type="text"
               class="modal-field"
