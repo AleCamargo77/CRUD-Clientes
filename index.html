@@ -20,23 +20,11 @@
     <header>
       <header id="header" class="header-container">
         <a id="logo" href="./index.html"><img src="./css/images/Logo Gomes preto.jpg"></a>
-        <!-- <div class="clock" id="clockNow">--:--:--</div> -->
         <nav class="nav" id="nav">
             <button aria-label="Abrir Menu" id="btn-mobile" aria-haspopup="true" aria-controls="menu"
                 aria-expanded="false">
                 <span id="hamburger"></span>
             </button>
-            <!-- <ul id="menu" role="menu">
-                <li>
-                    <a href="#ComunicacaoInterna">Comunicação Interna</a>
-                </li>
-                <li>
-                    <a href="./fretes.html">Calculadora Frete</a>
-                </li>
-                <li>
-                    <a href="./calculadora.html">Calculadora</a>
-                </li> -->
-            <!-- </ul> -->
         </nav>
       
     </header>
@@ -57,36 +45,6 @@
           </tr>
         </thead>
         <tbody id="tbodyClient">
-          <!-- <tr>
-            <td>Vânia</td>
-            <td>11/11/1984</td>
-            <td>(11) 97165-1111</td>
-            <td>Santos</td>
-            <td>
-              <button type="button" class="button green">editar</button>
-              <button type="button" class="button red">excluir</button>
-            </td>
-          </tr>
-          <tr>
-            <td>Luiz</td>
-            <td>22/02/1999</td>
-            <td>(11) 97165-2222</td>
-            <td>Santos</td>
-            <td>
-              <button type="button" class="button green">editar</button>
-              <button type="button" class="button red">excluir</button>
-            </td>
-          </tr>
-          <tr>
-            <td>Aninha</td>
-            <td>12/01/2015</td>
-            <td>(11) 97165-3333</td>
-            <td>Santos</td>
-            <td>
-              <button type="button" class="button green">editar</button>
-              <button type="button" class="button red">excluir</button>
-            </td>
-          </tr> -->
         </tbody>
       </table>
       <div class="modal" id="modal">
@@ -96,14 +54,14 @@
             <span class="modal-close" id="modalClose">&#10006;</span>
           </header>
           <form class="modal-form">
-            <input
+            <!-- <input
             type="number"
             class="modal-field"
             placeholder="ID"
             id="id"
             data-index="new"
-            value=1
-          />
+            disabled = ''
+          /> -->
             <input
               type="text"
               class="modal-field"
@@ -118,7 +76,7 @@
               id="birthday"
             />
             <input
-              type="text"
+              type="number"
               class="modal-field"
               placeholder="Celular do Cliente"
               id="cellphone"

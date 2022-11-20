@@ -1,5 +1,3 @@
-let id = 1;
-
 const openModal = () =>
   document.getElementById("modal").classList.add("active");
 
@@ -16,10 +14,11 @@ const setLocalStorage = (dbClient) =>
   localStorage.setItem("db_client", JSON.stringify(dbClient));
 
 const createClient = (client) => {
-  // id++;
   const dbClient = getLocalStorage();
-  console.log(dbClient);
+  console.log(dbClient[0]);
   dbClient.push(client);
+  // id++;
+  console.log(client);
   setLocalStorage(dbClient);
 };
 
@@ -37,12 +36,25 @@ const deleteClient = (index) => {
   setLocalStorage(dbClient);
 };
 
+// let ind = 0;
+// // const idClient = () => {
+// const dbClient = readClient();
+// for (let i = 0; i < dbClient.length; i++) {
+//   const element = dbClient[i];
+//   console.log(i);
+//   ind = i + 1;
+// }
+// };
+
+let id = 1;
 const save = () => {
+  let dataInput = document.getElementById("birthday").value;
+  data = new Date(dataInput);
   if (isValid()) {
     const client = {
-      id: document.getElementById("id").value,
+      id: id++,
       name: document.getElementById("name").value,
-      niver: document.getElementById("birthday").value,
+      niver: data.toLocaleDateString("pt-BR", { timeZone: "UTC" }),
       cell: document.getElementById("cellphone").value,
       city: document.getElementById("city").value,
     };
@@ -62,7 +74,7 @@ const save = () => {
 const createRow = (client, index) => {
   const newRow = document.createElement("tr");
   newRow.innerHTML = `
-  <td>${client.id}</td>
+    <td>${client.id}</td>
     <td>${client.name}</td>
     <td>${client.niver}</td>
     <td>${client.cell}</td>
@@ -107,7 +119,7 @@ const editDelete = (ev) => {
     } else {
       const client = readClient()[index];
       const responseDelete = confirm(
-        `Deseja realmente exluir o cliente ${client.name}?`
+        `Deseja realmente excluir o cliente ${client.name}?`
       );
       if (responseDelete) {
         deleteClient(index);
@@ -167,14 +179,28 @@ document.getElementById("modalClose").addEventListener("click", closeModal);
 
 document.getElementById("save").addEventListener("click", save);
 
+document.getElementById("cancel").addEventListener("click", closeModal);
+
 document
   .querySelector("#tableClient > tbody")
   .addEventListener("click", editDelete);
 
 updateTable();
 
-const date = new Date();
-const year = date.getFullYear();
-const footerYear = document.getElementById("year");
+const currentYear = () => {
+  const date = new Date();
+  const year = date.getFullYear();
+  const footerYear = document.getElementById("year");
+  footerYear.innerText = year;
+};
 
-footerYear.innerText = year;
+currentYear();
+
+function dataAtualFormatada() {
+  let data = new Date(2022 - 11 - 08),
+    dia = data.getDate().toString().padStart(2, "0"),
+    mes = (data.getMonth() + 1).toString().padStart(2, "0"),
+    ano = data.getFullYear();
+  console.log(data);
+  return dia + "/" + mes + "/" + ano;
+}
