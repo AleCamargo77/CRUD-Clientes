@@ -17,7 +17,6 @@ const createClient = (client) => {
   const dbClient = getLocalStorage();
   console.log(dbClient[0]);
   dbClient.push(client);
-  // id++;
   console.log(client);
   setLocalStorage(dbClient);
 };
@@ -35,16 +34,6 @@ const deleteClient = (index) => {
   dbClient.splice(index, 1);
   setLocalStorage(dbClient);
 };
-
-// let ind = 0;
-// // const idClient = () => {
-// const dbClient = readClient();
-// for (let i = 0; i < dbClient.length; i++) {
-//   const element = dbClient[i];
-//   console.log(i);
-//   ind = i + 1;
-// }
-// };
 
 let id = 1;
 const save = () => {
