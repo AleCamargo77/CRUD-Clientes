@@ -36,6 +36,7 @@ const deleteClient = (index) => {
 };
 
 let id = 1;
+
 const save = () => {
   let dataInput = document.getElementById("birthday").value;
   data = new Date(dataInput);
@@ -162,20 +163,6 @@ const isValid = () => {
   return true;
 };
 
-document.getElementById("registerClient").addEventListener("click", openModal);
-
-document.getElementById("modalClose").addEventListener("click", closeModal);
-
-document.getElementById("save").addEventListener("click", save);
-
-document.getElementById("cancel").addEventListener("click", closeModal);
-
-document
-  .querySelector("#tableClient > tbody")
-  .addEventListener("click", editDelete);
-
-updateTable();
-
 const currentYear = () => {
   const date = new Date();
   const year = date.getFullYear();
@@ -193,3 +180,17 @@ function dataAtualFormatada() {
   console.log(data);
   return dia + "/" + mes + "/" + ano;
 }
+
+document.getElementById("registerClient").addEventListener("click", openModal);
+
+document.getElementById("modalClose").addEventListener("click", closeModal);
+
+document.getElementById("save").addEventListener("click", save);
+
+document.getElementById("cancel").addEventListener("click", closeModal);
+
+document
+  .querySelector("#tableClient > tbody")
+  .addEventListener("click", editDelete);
+
+updateTable();
