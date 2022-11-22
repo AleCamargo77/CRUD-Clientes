@@ -1,3 +1,5 @@
+let idCurrentModal = 0;
+
 const openModal = () =>
   document.getElementById("modal").classList.add("active");
 
@@ -10,6 +12,7 @@ const closeModal = () => {
 
 const getLocalStorage = () =>
   JSON.parse(localStorage.getItem("db_client")) ?? [];
+  
 const setLocalStorage = (dbClient) =>
   localStorage.setItem("db_client", JSON.stringify(dbClient));
 
@@ -18,6 +21,7 @@ const createClient = (client) => {
   console.log(dbClient[0]);
   dbClient.push(client);
   console.log(client);
+  idCurrentModal = 0;
   setLocalStorage(dbClient);
 };
 
@@ -41,8 +45,15 @@ const save = () => {
   let dataInput = document.getElementById("birthday").value;
   data = new Date(dataInput);
   if (isValid()) {
+  let newId = idCurrentModal;
+
+    if (newId == 0) {
+      const dbClient = getLocalStorage();
+      newId = dbClient == null || dbClient.length == 0 ? 1 : dbClient.pop()?.id + 1;   
+    }
+  
     const client = {
-      id: id++,
+      id: newId,
       name: document.getElementById("name").value,
       niver: data.toLocaleDateString("pt-BR", { timeZone: "UTC" }),
       cell: document.getElementById("cellphone").value,
@@ -90,6 +101,7 @@ const editClient = (index) => {
   fillFields(client);
   const h2 = document.getElementById("client-h2");
   h2.innerText = `Atualizando cliente`;
+  idCurrentModal = client.id;
   openModal();
 };
 
