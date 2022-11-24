@@ -63,9 +63,9 @@ const save = () => {
       city: document.getElementById("city").value,
     };
     const index = document.getElementById("name").dataset.index;
-    console.log(client.niver);
-    let newdata = client.niver.split("/").reverse().join("-");
-    console.log(newdata);
+    // console.log(client.niver);
+    // let newdata = client.niver.split("/").reverse().join("-");
+    // console.log(newdata);
 
     if (index == "new") {
       createClient(client);
@@ -194,15 +194,6 @@ const currentYear = () => {
 
 currentYear();
 
-function dataAtualFormatada() {
-  let data = new Date(2022 - 11 - 08),
-    dia = data.getDate().toString().padStart(2, "0"),
-    mes = (data.getMonth() + 1).toString().padStart(2, "0"),
-    ano = data.getFullYear();
-  console.log(data);
-  return dia + "/" + mes + "/" + ano;
-}
-
 document.getElementById("registerClient").addEventListener("click", openModal);
 
 document.getElementById("modalClose").addEventListener("click", closeModal);
@@ -216,28 +207,3 @@ document
   .addEventListener("click", editDelete);
 
 updateTable();
-
-let data = new Date();
-
-var dataFormatada =
-  ("0" + data.getDate()).substr(-2) +
-  "/" +
-  ("0" + (data.getMonth() + 1)).substr(-2) +
-  "/" +
-  data.getFullYear();
-
-console.log(dataFormatada);
-
-// let yourDate = dataFormat.toLocaleDateString("en-CA");
-
-// console.log(yourDate);
-
-// let dataa = new Date();
-// let dataFormat =
-//   dataa.getDate() + "/" + (dataa.getMonth() + 1) + "/" + dataa.getFullYear();
-// console.log(dataFormat);
-// // saída: 8/7/2020
-
-var date = "24/09/2018";
-
-console.log(date); //print "2018/09/24"
