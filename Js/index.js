@@ -12,7 +12,7 @@ const closeModal = () => {
 
 const getLocalStorage = () =>
   JSON.parse(localStorage.getItem("db_client")) ?? [];
-  
+
 const setLocalStorage = (dbClient) =>
   localStorage.setItem("db_client", JSON.stringify(dbClient));
 
@@ -44,14 +44,17 @@ let id = 1;
 const save = () => {
   let dataInput = document.getElementById("birthday").value;
   data = new Date(dataInput);
+  console.log(data);
+
   if (isValid()) {
-  let newId = idCurrentModal;
+    let newId = idCurrentModal;
 
     if (newId == 0) {
       const dbClient = getLocalStorage();
-      newId = dbClient == null || dbClient.length == 0 ? 1 : dbClient.pop()?.id + 1;   
+      newId =
+        dbClient == null || dbClient.length == 0 ? 1 : dbClient.pop()?.id + 1;
     }
-  
+
     const client = {
       id: newId,
       name: document.getElementById("name").value,
@@ -60,6 +63,10 @@ const save = () => {
       city: document.getElementById("city").value,
     };
     const index = document.getElementById("name").dataset.index;
+    // console.log(client.niver);
+    // let newdata = client.niver.split("/").reverse().join("-");
+    // console.log(newdata);
+
     if (index == "new") {
       createClient(client);
       updateTable();
@@ -107,7 +114,10 @@ const editClient = (index) => {
 
 const fillFields = (client) => {
   document.getElementById("name").value = client.name;
-  document.getElementById("birthday").value = client.niver;
+  document.getElementById("birthday").value = client.niver
+    .split("/")
+    .reverse()
+    .join("-");
   document.getElementById("cellphone").value = client.cell;
   document.getElementById("city").value = client.city;
   document.getElementById("name").dataset.index = client.index;
@@ -184,15 +194,6 @@ const currentYear = () => {
 
 currentYear();
 
-function dataAtualFormatada() {
-  let data = new Date(2022 - 11 - 08),
-    dia = data.getDate().toString().padStart(2, "0"),
-    mes = (data.getMonth() + 1).toString().padStart(2, "0"),
-    ano = data.getFullYear();
-  console.log(data);
-  return dia + "/" + mes + "/" + ano;
-}
-
 document.getElementById("registerClient").addEventListener("click", openModal);
 
 document.getElementById("modalClose").addEventListener("click", closeModal);
@@ -206,3 +207,5 @@ document
   .addEventListener("click", editDelete);
 
 updateTable();
+
+//|CRUD
