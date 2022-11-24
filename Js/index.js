@@ -207,3 +207,5 @@ document
   .addEventListener("click", editDelete);
 
 updateTable();
+
+//|CRUD
