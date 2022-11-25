@@ -206,6 +206,9 @@ document
   .querySelector("#tableClient > tbody")
   .addEventListener("click", editDelete);
 
-updateTable();
+document.getElementById('loadClient').addEventListener('click', updateTable)
 
-//|CRUD
+function update () {
+  updateTable()
+}
+// updateTable();
